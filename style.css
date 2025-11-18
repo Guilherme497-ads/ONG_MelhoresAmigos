@@ -316,15 +316,10 @@ footer {
   background-color: #333;
   color: var(--cor-branca);
 }
-
-/* --- VALIDAÇÃO (BORDAS VERMELHAS E ASTERISCOS) --- */
-/* Isso faz a borda ficar vermelha */
 .input-erro {
     border: 2px solid #ff4444 !important;
     background-color: #fff8f8 !important;
 }
-
-/* Isso faz o asterisco ficar vermelho */
 .asterisco {
     color: #ff4444;
     font-weight: bold;
