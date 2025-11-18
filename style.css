@@ -25,6 +25,7 @@ body {
   color: var(--cor-texto);
 }
 
+/* --- HEADER & NAV --- */
 header {
   background-color: var(--cor-primaria);
   color: var(--cor-branca);
@@ -49,34 +50,6 @@ header h1 {
 
 .header-left .titulo-principal {
   margin-bottom: 0;
-}
-
-main {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-main > section {
-  background-color: var(--cor-fundo-bloco);
-  border-radius: 8px;
-  box-shadow: var(--sombra-padrao);
-  padding: 2.5rem;
-  margin-bottom: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-main > section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-footer {
-  text-align: center;
-  padding: 2.5rem 1.5rem;
-  margin-top: 2rem;
-  background-color: #333;
-  color: var(--cor-branca);
 }
 
 nav {
@@ -113,6 +86,28 @@ nav a:hover {
   transform: scale(1.05);
 }
 
+/* --- LAYOUT PRINCIPAL --- */
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+main > section {
+  background-color: var(--cor-fundo-bloco);
+  border-radius: 8px;
+  box-shadow: var(--sombra-padrao);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+main > section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* --- TIPOGRAFIA --- */
 main h2 {
   color: var(--cor-primaria);
   margin-bottom: 1.5rem;
@@ -123,7 +118,7 @@ main h2 {
 }
 
 main h3 {
-  color: var(--cor-primaria);
+  color: var(--cor-primaria);;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 700;
@@ -155,6 +150,7 @@ main a:hover {
   text-decoration: underline;
 }
 
+/* --- IMAGENS --- */
 img {
   max-width: 100%;
   height: auto;
@@ -172,6 +168,7 @@ main img:hover {
   transform: scale(1.03);
 }
 
+/* Hero (Banner Inicial) */
 .hero {
   width: 100%;
   max-height: 450px; 
@@ -190,6 +187,17 @@ main img:hover {
   display: inline-block; 
 }
 
+/* IMAGEM DE DESTAQUE (PROJETOS) - CORREÇÃO DE TAMANHO */
+.img-destaque {
+    width: 100%;           
+    height: 300px;         
+    object-fit: cover;     
+    border-radius: 8px;    
+    margin-bottom: 1.5rem; 
+}
+
+
+/* --- FORMULÁRIOS E BOTÕES --- */
 button,
 input[type="submit"] {
   background-color: var(--cor-acao);
@@ -271,6 +279,7 @@ form button[type="submit"] {
   padding: 1rem;
 }
 
+/* --- SEÇÃO COMO DOAR --- */
 #secao-doar {
   display: flex;         
   align-items: center;   
@@ -298,4 +307,26 @@ form button[type="submit"] {
 
 #secao-doar img:hover {
   transform: scale(1.03);
+}
+
+footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  margin-top: 2rem;
+  background-color: #333;
+  color: var(--cor-branca);
+}
+
+/* --- VALIDAÇÃO (BORDAS VERMELHAS E ASTERISCOS) --- */
+/* Isso faz a borda ficar vermelha */
+.input-erro {
+    border: 2px solid #ff4444 !important;
+    background-color: #fff8f8 !important;
+}
+
+/* Isso faz o asterisco ficar vermelho */
+.asterisco {
+    color: #ff4444;
+    font-weight: bold;
+    margin-left: 5px;
 }
