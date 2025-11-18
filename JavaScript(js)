@@ -1,0 +1,168 @@
+const templates = {
+    home: `
+        <div class="hero">
+            <img src="IMG/cachorrinhos.jpeg" alt="Três cachorrinhos">
+        </div>
+        <section>
+             <h2>Quem somos</h2>
+             <p>Somos os Melhores Amigos, uma organização sem fins lucrativos dedicada ao resgate, cuidado e adoção responsável de cães abandonados. Desde 2021, trabalhamos para dar uma nova chance a centenas de animais que foram vítimas de abandono ou maus-tratos.</p>
+        </section>
+        <section>
+            <h3>MISSÃO</h3>
+            <p>Promover o bem-estar animal por meio do resgate, reabilitação e adoção responsável de cães, contribuindo para uma convivência mais humana e solidária entre pessoas e animais.</p>
+        </section>
+        <section>
+            <h3>COMO AJUDAR</h3>
+            <ul>
+                <li>Seja voluntário em nossos eventos.</li>
+                <li>Doe ração ou medicamentos.</li>
+                <li><a href="#" onclick="navegar('cadastro')">Faça seu Cadastro</a>.</li> 
+            </ul>
+        </section>
+    `,
+    
+    projetos: `
+        <section>
+            <h2>Voluntariado</h2>
+            <img src="IMG/cahorrodeitado.jpeg" alt="Cachorro deitado" class="img-destaque">
+            
+            <p>O voluntariado é o coração da ONG Melhores Amigos. Nossos voluntários dedicam tempo, carinho e energia para ajudar nos resgates, cuidar dos cães e organizar feiras de adoção.</p>
+            <p>Ao se tornar voluntário, você participa ativamente da transformação de vidas — tanto dos animais quanto das pessoas envolvidas.</p>
+            
+            <button type="button" onclick="navegar('cadastro')">Quero ser voluntário</button>
+        </section>
+
+        <section id="secao-doar">
+            <div class="conteudo-doar">
+                <h2>Como Doar</h2>
+                <p>As doações são essenciais para manter nosso trabalho. Todo o valor arrecadado é usado em vacinas, rações, castrações e tratamentos veterinários.</p>
+                <ul>
+                    <li>💰 Doação em dinheiro (Pix, transferência bancária)</li>
+                    <li>🧴 Doação de ração, remédios ou produtos de limpeza</li>
+                    <li>🏠 Apadrinhamento de cães resgatados</li>
+                </ul>
+                <p><strong>Chave PIX:</strong> contato@ongmelhoresamigos.org.br</p>
+            </div>
+            <img src="IMG/adotadooo.jpeg" alt="Cachorro feliz">
+        </section>
+    `,
+
+    cadastro: `
+        <section>
+            <h2>Faça parte da nossa matilha! 🐾</h2>
+            <p>Os campos com <span class="asterisco">*</span> são obrigatórios.</p>
+            
+            <form id="form-cadastro" onsubmit="validarFormulario(event)">
+                <fieldset>
+                    <legend>Tipo de Cadastro</legend>
+                    <label for="tipo">Eu quero ser: <span class="asterisco">*</span></label>
+                    <select id="tipo" name="tipo">
+                        <option value="">Selecione...</option>
+                        <option value="doador">Doador</option>
+                        <option value="voluntario">Voluntário</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Dados Pessoais</legend>
+                    <label for="nome">Nome completo: <span class="asterisco">*</span></label>
+                    <input type="text" id="nome" placeholder="Ex: João da Silva">
+
+                    <label for="cpf">CPF: <span class="asterisco">*</span></label>
+                    <input type="text" id="cpf" placeholder="000.000.000-00">
+
+                    <label for="email">E-mail: <span class="asterisco">*</span></label>
+                    <input type="text" id="email" placeholder="exemplo@email.com">
+                    
+                    <label for="telefone">Telefone: <span class="asterisco">*</span></label>
+                    <input type="text" id="telefone" placeholder="(00) 00000-0000">
+                </fieldset>
+
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <label for="cep">CEP: <span class="asterisco">*</span></label>
+                    <input type="text" id="cep" placeholder="00000-000">
+
+                    <label for="endereco">Endereço: <span class="asterisco">*</span></label>
+                    <input type="text" id="endereco" placeholder="Rua, número, complemento">
+
+                    <label for="cidade">Cidade: <span class="asterisco">*</span></label>
+                    <input type="text" id="cidade" placeholder="Digite sua cidade">
+
+                    <label for="estado">Estado: <span class="asterisco">*</span></label>
+                    <select id="estado">
+                        <option value="">Selecione</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="GO">Goiás</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="BA">Bahia</option>
+                        <option value="PR">Paraná</option>
+                    </select>
+                </fieldset>
+
+                <button type="submit">Enviar Cadastro</button>
+            </form>
+        </section>
+    `
+};
+
+
+function navegar(pagina) {
+    const app = document.getElementById('app');
+    if (templates[pagina]) {
+        app.innerHTML = templates[pagina];
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        app.innerHTML = '<h2>Página não encontrada!</h2>';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    navegar('home');
+});
+
+
+function validarFormulario(event) {
+    event.preventDefault(); 
+
+    
+    const campos = {
+        tipo: document.getElementById('tipo'),
+        nome: document.getElementById('nome'),
+        cpf: document.getElementById('cpf'),
+        email: document.getElementById('email'),
+        telefone: document.getElementById('telefone'),
+        cep: document.getElementById('cep'),
+        endereco: document.getElementById('endereco'),
+        cidade: document.getElementById('cidade'),
+        estado: document.getElementById('estado')
+    };
+
+    
+    for (let key in campos) {
+        campos[key].classList.remove('input-erro');
+    }
+
+    let temErro = false;
+    if (campos.tipo.value === "") { campos.tipo.classList.add('input-erro'); temErro = true; }
+    if (campos.nome.value.trim().length < 3) { campos.nome.classList.add('input-erro'); temErro = true; }
+    if (campos.cpf.value.length < 11) { campos.cpf.classList.add('input-erro'); temErro = true; }
+    if (campos.email.value.indexOf('@') === -1 || campos.email.value.indexOf('.') === -1) { campos.email.classList.add('input-erro'); temErro = true; }
+    if (campos.telefone.value.length < 8) { campos.telefone.classList.add('input-erro'); temErro = true; }
+    
+    if (campos.cep.value.length < 8) { campos.cep.classList.add('input-erro'); temErro = true; }
+    if (campos.endereco.value.trim() === "") { campos.endereco.classList.add('input-erro'); temErro = true; }
+    if (campos.cidade.value.trim() === "") { campos.cidade.classList.add('input-erro'); temErro = true; }
+    if (campos.estado.value === "") { campos.estado.classList.add('input-erro'); temErro = true; }
+
+  
+    if (temErro) {
+        alert("⚠️ Por favor, preencha corretamente os campos destacados em vermelho.");
+    } else {
+        alert("✅ Sucesso! Cadastro realizado com sucesso.\nEntraremos em contato em breve, " + campos.nome.value + "!");
+        document.getElementById('form-cadastro').reset();
+        setTimeout(() => navegar('home'), 1000);
+    }
+}
